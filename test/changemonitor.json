@@ -1,0 +1,93 @@
+{
+  "id": 428737,
+  "service": {
+    "name": "moderation-stream",
+    "id": 340
+  },
+  "created": "2023-06-19T12:18:14.964345Z",
+  "source": "spinnaker",
+  "pipeline_status": "succeed",
+  "deploy_type": "deploy",
+  "enrich_status": "succeed",
+  "exception_text": null,
+  "enriched_data": {
+    "user": "ddudchenko@tango.me",
+    "history": {
+      "full_deploy": {
+        "end": 1687179346652,
+        "start": 1687177093152,
+        "status": "SUCCEEDED"
+      },
+      "canary_install": {
+        "end": 1687177683960,
+        "start": 1687177596640,
+        "status": "SUCCEEDED"
+      },
+      "canary_uninstall": {
+        "end": 1687179236154,
+        "start": 1687179206332,
+        "status": "SUCCEEDED"
+      },
+      "component_deploy": {
+        "end": 1687179206277,
+        "start": 1687178957260,
+        "status": "SUCCEEDED"
+      }
+    },
+    "version": "tangome-production/moderation-stream:0.1.54",
+    "end_time": 1687268960000,
+    "other_diff": [
+      {
+        "diff": "@@ -440,7 +440,7 @@\n     exit $rc\n   version.properties: |+\n     Implementation-Title=moderation-stream\n-    Implementation-Version=0.1.53\n+    Implementation-Version=0.1.54\n \n serverConfigs:\n   args:"
+      },
+      {
+        "diff": "   - /appconfigs/start.sh\n   configMapping:\n   - src: application.properties\n-    target: /opt/unzipped-9aih7m3z/BOOT-INF/classes/application.properties\n+    target: /opt/unzipped-2l0lxje9/BOOT-INF/classes/application.properties\n   - src: version.properties\n-    target: /opt/unzipped-9aih7m3z/BOOT-INF/classes/version.properties\n+    target: /opt/unzipped-2l0lxje9/BOOT-INF/classes/version.properties\n   - src: application.properties\n-    target: /opt/unzipped-p9z5yj2m/BOOT-INF/classes/application.properties\n+    target: /opt/unzipped-4yi5dxe_/BOOT-INF/classes/application.properties\n   - src: version.properties\n-    target: /opt/unzipped-p9z5yj2m/BOOT-INF/classes/version.properties\n+    target: /opt/unzipped-4yi5dxe_/BOOT-INF/classes/version.properties\n   deployment:\n     annotations:\n       com.tango.docker.labels.gitBranch: master\n-      com.tango.docker.labels.gitRevision: b0fa394\n-      com.tango.helm.charts.cfg.build.id: '59961'\n-      com.tango.helm.charts.cfg.build.url: http://jenkins-prd.tango.corp/job/Applications-configurations-dynamic-builder/59961/\n+      com.tango.docker.labels.gitRevision: '2013161'\n+      com.tango.helm.charts.cfg.build.id: '62858'\n+      com.tango.helm.charts.cfg.build.url: http://jenkins-prd.tango.corp/job/Applications-configurations-dynamic-builder/62858/\n       strategy.spinnaker.io/max-version-history: '5'\n       strategy.spinnaker.io/use-source-capacity: 'true'\n     labels:"
+      },
+      {
+        "diff": "           admission.datadoghq.com/java-lib.version: v1.2.0\n           app_cm_version: app_cm_version\n           com.tango.docker.labels.gitBranch: master\n-          com.tango.docker.labels.gitRevision: b0fa394\n+          com.tango.docker.labels.gitRevision: '2013161'\n           prometheus.io/path: /metrics\n           prometheus.io/port: '9081'\n           prometheus.io/scrape_port_name: promscrape\n"
+      }
+    ],
+    "start_time": 1687177093152,
+    "deploy_type": "deploy",
+    "jira_ticket": "OPS-44200",
+    "pipeline_id": "01H39SEQWCYS9P0PM8WM0XNS61",
+    "service_name": "moderation-stream",
+    "deploy_action": "canary",
+    "deploy_status": "deploy",
+    "pipeline_name": "deploy-production-canary-service-helm-unified",
+    "revision_link": "https://gitlab.tango.me/ops/applications-configurations/-/tree/ab75ed9fbc3cb3fdbf996df3c89ae45606840959",
+    "pipeline_status": "succeed",
+    "properties_diff": null
+  },
+  "pipeline_id": "01H39SEQWCYS9P0PM8WM0XNS61",
+  "version": "tangome-production/moderation-stream:0.1.54",
+  "jira_ticket": "OPS-44200",
+  "user": "ddudchenko@tango.me",
+  "is_healthy": null,
+  "life_time": null,
+  "deploy_status": "deploy",
+  "comment": null,
+  "details": null,
+  "history": {
+    "full_deploy": {
+      "end": 1687179346652,
+      "start": 1687177093152,
+      "status": "SUCCEEDED"
+    },
+    "canary_install": {
+      "end": 1687177683960,
+      "start": 1687177596640,
+      "status": "SUCCEEDED"
+    },
+    "canary_uninstall": {
+      "end": 1687179236154,
+      "start": 1687179206332,
+      "status": "SUCCEEDED"
+    },
+    "component_deploy": {
+      "end": 1687179206277,
+      "start": 1687178957260,
+      "status": "SUCCEEDED"
+    }
+  }
+}

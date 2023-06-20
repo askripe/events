@@ -24,7 +24,14 @@
   {{- end}}
 
   {{- if eq .type "UnleashEvent"}}
-    {{- printf "%s at %s %s on %s" .data.createdBy .data.createdAt .data.type .data.featureName}}
+    {{- printf "%s at %s %s(%s)" .data.createdBy .data.createdAt .data.type .data.featureName}}
+    {{- if .data.data}}
+      {{ toJSON .data.data}}
+    {{- end}}
+  {{- end}}
+
+  {{- if eq .type "ChangeMonitorEvent"}}
+    {{- printf "%s %s\n%s\n%s" .data.source .data.service.name .data.deploy_type .data.pipeline_status}}
     {{- if .data.data}}
       {{ toJSON .data.data}}
     {{- end}}

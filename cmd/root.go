@@ -55,7 +55,7 @@ var textTemplateOptions = toolsRender.TemplateOptions{
 var stdoutOptions = sreProvider.StdoutOptions{
 	Format:          envGet("STDOUT_FORMAT", "text").(string),
 	Level:           envGet("STDOUT_LEVEL", "info").(string),
-	Template:        envGet("STDOUT_TEMPLATE", "{{.file}} {{.msg}}").(string),
+	Template:        envGet("STDOUT_TEMPLATE", "{{- . |toJSON}}").(string),
 	TimestampFormat: envGet("STDOUT_TIMESTAMP_FORMAT", time.RFC3339Nano).(string),
 	TextColors:      envGet("STDOUT_TEXT_COLORS", true).(bool),
 }
@@ -80,6 +80,7 @@ var httpInputOptions = input.HttpInputOptions{
 	AWSURL:            envGet("HTTP_IN_AWS_URL", "").(string),
 	ZabbixURL:         envGet("HTTP_IN_ZABBIX_URL", "").(string),
 	UnleashURL:        envGet("HTTP_IN_UNLEASH_URL", "").(string),
+	ChangeMonitorURL:  envGet("HTTP_IN_CHANGEMONITOR_URL", "").(string),
 	GoogleURL:         envGet("HTTP_IN_GOOGLE_URL", "").(string),
 	CloudflareURL:     envGet("HTTP_IN_CLOUDFLARE_URL", "").(string),
 	Site24x7URL:       envGet("HTTP_IN_SITE24X7_URL", "").(string),
@@ -500,6 +501,7 @@ func Execute() {
 			processors.Add(processor.NewAWSProcessor(&outputs, observability))
 			processors.Add(processor.NewZabbixProcessor(&outputs, observability))
 			processors.Add(processor.NewUnleashProcessor(&outputs, observability))
+			processors.Add(processor.NewChangeMonitorProcessor(&outputs, observability))
 			processors.Add(processor.NewVCenterProcessor(&outputs, observability))
 			processors.Add(processor.NewObserviumEventProcessor(&outputs, observability))
 			processors.Add(processor.NewTeamcityProcessor(&outputs, observability))
@@ -558,6 +560,7 @@ func Execute() {
 	flags.StringVar(&httpInputOptions.AWSURL, "http-in-aws-url", httpInputOptions.AWSURL, "Http AWS url")
 	flags.StringVar(&httpInputOptions.ZabbixURL, "http-in-zabbix-url", httpInputOptions.ZabbixURL, "Http Zabbix url")
 	flags.StringVar(&httpInputOptions.UnleashURL, "http-in-unleash-url", httpInputOptions.UnleashURL, "Http Unleash url")
+	flags.StringVar(&httpInputOptions.ChangeMonitorURL, "http-in-changemonitor-url", httpInputOptions.ChangeMonitorURL, "Http ChangeMonitor url")
 	flags.StringVar(&httpInputOptions.CustomJsonURL, "http-in-customjson-url", httpInputOptions.CustomJsonURL, "Http CustomJson url")
 	flags.StringVar(&httpInputOptions.TeamcityURL, "http-in-teamcity-url", httpInputOptions.TeamcityURL, "Http Teamcity url")
 	flags.StringVar(&httpInputOptions.ServerName, "http-in-server-name", httpInputOptions.ServerName, "Http server name")
